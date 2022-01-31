@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	"github.com/zhenyiya/logging"
+	"github.com/zhenyiya/logger"
 )
 
 type Element interface {

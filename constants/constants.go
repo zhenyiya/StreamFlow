@@ -18,6 +18,8 @@ const (
 	DefaultLogPath         = "./history.log"
 	DefaultDataStorePath   = "./streamflow.dat"
 	DefaultLogPrefix       = "zhenyiya/"
+	CleanHistory           = true
+	DefaultNotCleanHistory = false
 )
 
 // master/worker setting

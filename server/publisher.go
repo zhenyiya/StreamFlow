@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/zhenyiya/logging"
+	"github.com/zhenyiya/logger"
 	"time"
 )
 

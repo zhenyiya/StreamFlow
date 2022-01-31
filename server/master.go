@@ -2,7 +2,7 @@ package server
 
 import (
 	"errors"
-	"github.com/zhenyiya/logging"
+	"github.com/zhenyiya/logger"
 	"strconv"
 )
 
