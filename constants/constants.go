@@ -66,7 +66,11 @@ var (
 	ErrNoCollaborator     = errors.New("zhenyiya: collaborator does not exist")
 	ErrCollaboratorExists = errors.New("zhenyiya: collaborator already exists")
 	ErrNoService          = errors.New("zhenyiya: service of id does not exist")
-	ErrConflictService    = errors.New("zhenyiya: found conflict, service of id alreadt existed")
+	ErrConflictService    = errors.New("zhenyiya: found conflict, service of id already exists")
+	ErrNoRegister         = errors.New("zhenyiya: register does not exist")
+	ErrConflictRegister   = errors.New("zhenyiya: found conflict, provider of the service already exists")
+	ErrNoSubscriber       = errors.New("zhenyiya: subscriber does not exist")
+	ErrConflictSubscriber = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
 )
 
 type Header struct {
