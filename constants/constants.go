@@ -36,6 +36,7 @@ var (
 	DefaultPeriodRoutineWeek   = 7 * 24 * time.Hour
 	DefaultPeriodRoutine30Days = 30 * DefaultPeriodRoutineDay
 	DefaultPeriodPermanent     = 0 * time.Second
+	DefaultTaskExpireTime      = 30 * time.Second
 )
 
 // communication types
@@ -79,6 +80,8 @@ var (
 	ErrConflictRegister   = errors.New("zhenyiya: found conflict, provider of the service already exists")
 	ErrNoSubscriber       = errors.New("zhenyiya: subscriber does not exist")
 	ErrConflictSubscriber = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
+	ErrTimeout            = errors.New("zhenyiya: task timeout error")
+	ErrNoPeers            = errors.New("zhenyiya: no peer appears in the contact book")
 )
 
 type Header struct {
