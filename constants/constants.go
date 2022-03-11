@@ -17,9 +17,15 @@ const (
 	DefaultContactBookPath = "./contact.json"
 	DefaultLogPath         = "./history.log"
 	DefaultDataStorePath   = "./streamflow.dat"
-	DefaultLogPrefix       = "zhenyiya/"
+	DefaultLogPrefix       = "zhenyiya:"
 	CleanHistory           = true
 	DefaultNotCleanHistory = false
+	Mapper                 = "Mapper"
+	Reducer                = "Reducer"
+	Function               = "Function"
+	Shared                 = "Shared"
+	Local                  = "Local"
+	ProjectPath            = "ProjectPath"
 )
 
 // master/worker setting
@@ -82,6 +88,7 @@ var (
 	ErrConflictSubscriber = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
 	ErrTimeout            = errors.New("zhenyiya: task timeout error")
 	ErrNoPeers            = errors.New("zhenyiya: no peer appears in the contact book")
+	ErrFunctNotExist      = errors.New("zhenyiya: no such function found in store")
 )
 
 type Header struct {
@@ -105,6 +112,6 @@ const (
 	JSONAPIVersion = `{"version":"1.0"}`
 )
 
-const (
+var (
 	ProjectDir = "github.com/zhenyiya/"
 )
