@@ -2,6 +2,7 @@ package constants
 
 import (
 	"errors"
+	"os"
 	"time"
 )
 
@@ -113,5 +114,6 @@ const (
 )
 
 var (
-	ProjectDir = "github.com/zhenyiya/"
+	ProjectDir     = "github.com/zhenyiya/"
+	ProjectUnixDir = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/"
 )
