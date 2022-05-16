@@ -97,6 +97,8 @@ var (
 	ErrTimeout            = errors.New("zhenyiya: task timeout error")
 	ErrNoPeers            = errors.New("zhenyiya: no peer appears in the contact book")
 	ErrFunctNotExist      = errors.New("zhenyiya: no such function found in store")
+	ErrMapperNotFound     = errors.New("zhenyiya: no such mapper found in store")
+	ErrReducerNotFound    = errors.New("zhenyiya: no such reducer found in store")
 )
 
 type Header struct {
