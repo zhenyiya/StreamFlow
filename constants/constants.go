@@ -51,6 +51,7 @@ var (
 	DefaultPeriodPermanent     = 0 * time.Second
 	DefaultTaskExpireTime      = 30 * time.Second
 	DefaultGCInterval          = 30 * time.Second
+	DefaultMaxMappingTime      = 600 * time.Second
 )
 
 // communication types
@@ -99,6 +100,7 @@ var (
 	ErrFunctNotExist      = errors.New("zhenyiya: no such function found in store")
 	ErrMapperNotFound     = errors.New("zhenyiya: no such mapper found in store")
 	ErrReducerNotFound    = errors.New("zhenyiya: no such reducer found in store")
+	ErrValNotFound        = errors.New("zhenyiya: no value found with such key")
 )
 
 type Header struct {
