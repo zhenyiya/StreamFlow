@@ -2,9 +2,9 @@ package servershared
 
 import (
 	"fmt"
-	"github.com/zhenyiya/funcstore"
 	"github.com/zhenyiya/logger"
 	"github.com/zhenyiya/server/task"
+	"github.com/zhenyiya/store"
 )
 
 type Worker struct {
@@ -19,7 +19,7 @@ type Worker struct {
 }
 
 func (w *Worker) Start() {
-	fs := funcstore.GetFSInstance()
+	fs := store.GetInstance()
 	go func() {
 		for {
 			select {

@@ -3,14 +3,15 @@ package workable
 import (
 	"errors"
 	"github.com/zhenyiya/constants"
-	"github.com/zhenyiya/funcstore"
 	"github.com/zhenyiya/logger"
 	"github.com/zhenyiya/remote/collaborator"
 	"github.com/zhenyiya/server/mapper"
 	"github.com/zhenyiya/server/reducer"
 	"github.com/zhenyiya/server/servershared"
 	"github.com/zhenyiya/server/task"
+	"github.com/zhenyiya/store"
 	"strconv"
+	"sync"
 	"time"
 )
 
@@ -50,44 +51,66 @@ func (m *Master) Enqueue(ts ...*task.Task) {
 	}
 }
 
-func (m *Master) Proceed(tsk *task.Task) error {
+// proceed will process the parallel tasks at the same stage
+func (m *Master) Proceed(tsks ...*task.Task) (*sync.WaitGroup, chan error) {
+
 	var (
-		mp   mapper.Mapper
-		rd   reducer.Reducer
-		maps map[int64]*task.Task
-		err  error
+		NumTsks = len(tsks)
+		errchan = make(chan error, NumTsks)
+		wg      = &sync.WaitGroup{}
 	)
-	fs := funcstore.GetFSInstance()
-	mp, err = fs.GetMapper(tsk.Mapper)
 
-	if err != nil {
-		return err
+	wg.Add(NumTsks)
+
+	for _, tsk := range tsks {
+		go func() {
+			defer wg.Done()
+			var (
+				mp   mapper.Mapper
+				rd   reducer.Reducer
+				maps map[int64]*task.Task
+				err  error
+			)
+			fs := store.GetInstance()
+			mp, err = fs.GetMapper(tsk.Mapper)
+
+			if err != nil {
+				errchan <- err
+				return
+			}
+
+			maps, err = mp.Map(tsk)
+
+			if err != nil {
+				errchan <- err
+				return
+			}
+
+			maps, err = m.bookkeeper.SyncDistribute(maps)
+
+			if err != nil {
+				errchan <- err
+				return
+			}
+
+			rd, err = fs.GetReducer(tsk.Reducer)
+
+			if err != nil {
+				errchan <- err
+				return
+			}
+
+			errchan <- rd.Reduce(maps, tsk)
+			return
+		}()
 	}
 
-	maps, err = mp.Map(tsk)
-
-	if err != nil {
-		return err
-	}
-
-	maps, err = m.bookkeeper.SyncDistribute(maps)
-
-	if err != nil {
-		return err
-	}
-
-	rd, err = fs.GetReducer(tsk.Reducer)
-
-	if err != nil {
-		return err
-	}
-
-	return rd.Reduce(maps, tsk)
+	return wg, errchan
 }
 
 // sequentially execute all tasks
 func (m *Master) Done(ts ...*task.Task) error {
-	fs := funcstore.GetFSInstance()
+	fs := store.GetInstance()
 	for _, t := range ts {
 		switch t.Priority.GetPriority() {
 		case task.URGENT:
