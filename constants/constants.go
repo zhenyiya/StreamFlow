@@ -15,7 +15,7 @@ const (
 	DebugInactivated       = false
 	DebugActivated         = true
 	DefaultListenPort      = 8080
-	DefaultContactBookPath = "./contact.json"
+	DefaultCasePath        = "./case.json"
 	DefaultLogPath         = "./history.log"
 	DefaultDataStorePath   = "./streamflow.dat"
 	DefaultLogPrefix       = "zhenyiya:"
@@ -30,6 +30,8 @@ const (
 	ProjectPath            = "ProjectPath"
 	DefaultWorkerPerMaster = 10
 	DefaultHost            = "localhost"
+	DefaultGossipNum       = 5
+	DefaultCaseID          = "zhenyiyaStandardCase"
 )
 
 // store setting
@@ -48,6 +50,7 @@ var (
 	DefaultTaskExpireTime      = 30 * time.Second
 	DefaultGCInterval          = 30 * time.Second
 	DefaultMaxMappingTime      = 600 * time.Second
+	DefaultSynInterval         = 3 * time.Minute
 )
 
 // communication types
@@ -79,25 +82,27 @@ const (
 
 // errors
 var (
-	ErrUnknownCmdArg      = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
-	ErrConnectionClosed   = errors.New("zhenyiya: connection closed")
-	ErrUnknown            = errors.New("zhenyiya: unknown error")
-	ErrAPIError           = errors.New("zhenyiya: api error")
-	ErrNoCollaborator     = errors.New("zhenyiya: collaborator does not exist")
-	ErrCollaboratorExists = errors.New("zhenyiya: collaborator already exists")
-	ErrNoService          = errors.New("zhenyiya: service of id does not exist")
-	ErrConflictService    = errors.New("zhenyiya: found conflict, service of id already exists")
-	ErrNoRegister         = errors.New("zhenyiya: register does not exist")
-	ErrConflictRegister   = errors.New("zhenyiya: found conflict, provider of the service already exists")
-	ErrNoSubscriber       = errors.New("zhenyiya: subscriber does not exist")
-	ErrConflictSubscriber = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
-	ErrTimeout            = errors.New("zhenyiya: task timeout error")
-	ErrNoPeers            = errors.New("zhenyiya: no peer appears in the contact book")
-	ErrFunctNotExist      = errors.New("zhenyiya: no such function found in store")
-	ErrJobNotExist        = errors.New("zhenyiya: no sucn job found in store")
-	ErrMapperNotFound     = errors.New("zhenyiya: no such mapper found in store")
-	ErrReducerNotFound    = errors.New("zhenyiya: no such reducer found in store")
-	ErrValNotFound        = errors.New("zhenyiya: no value found with such key")
+	ErrUnknownCmdArg        = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
+	ErrConnectionClosed     = errors.New("zhenyiya: connection closed")
+	ErrUnknown              = errors.New("zhenyiya: unknown error")
+	ErrAPIError             = errors.New("zhenyiya: api error")
+	ErrNoCollaborator       = errors.New("zhenyiya: collaborator does not exist")
+	ErrCollaboratorExists   = errors.New("zhenyiya: collaborator already exists")
+	ErrNoService            = errors.New("zhenyiya: service of id does not exist")
+	ErrConflictService      = errors.New("zhenyiya: found conflict, service of id already exists")
+	ErrNoRegister           = errors.New("zhenyiya: register does not exist")
+	ErrConflictRegister     = errors.New("zhenyiya: found conflict, provider of the service already exists")
+	ErrNoSubscriber         = errors.New("zhenyiya: subscriber does not exist")
+	ErrConflictSubscriber   = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
+	ErrTimeout              = errors.New("zhenyiya: task timeout error")
+	ErrNoPeers              = errors.New("zhenyiya: no peer appears in the contact book")
+	ErrFunctNotExist        = errors.New("zhenyiya: no such function found in store")
+	ErrJobNotExist          = errors.New("zhenyiya: no sucn job found in store")
+	ErrMapperNotFound       = errors.New("zhenyiya: no such mapper found in store")
+	ErrReducerNotFound      = errors.New("zhenyiya: no such reducer found in store")
+	ErrValNotFound          = errors.New("zhenyiya: no value found with such key")
+	ErrCaseMismatch         = errors.New("zhenyiya: case mismatch error")
+	ErrCollaboratorMismatch = errors.New("zhenyiya: collaborator mismatch error")
 )
 
 type Header struct {
@@ -105,7 +110,7 @@ type Header struct {
 	Value string `json:"value"`
 }
 
-// header
+// HTTP headers
 var (
 	Header200OK        = Header{"200", "OK"}
 	Header201Created   = Header{"201", "Created"}
@@ -116,12 +121,22 @@ var (
 	Header409Conflict  = Header{"409", "Conflict"}
 )
 
+// Gossip Protocol headers
+var (
+	GossipHeaderOK                   = Header{"200", "OK"}
+	GossipHeaderCaseMismatch         = Header{"401", "CaseMismatch"}
+	GossipHeaderCollaboratorMismatch = Header{"401", "CollaboratorMismatch"}
+	GossipHeaderUnknownError         = Header{"500", "UnknownGossipError"}
+)
+
 // restful
 const (
 	JSONAPIVersion = `{"version":"1.0"}`
 )
 
 var (
-	ProjectDir     = "github.com/zhenyiya/"
-	ProjectUnixDir = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/"
+	ProjectDir     = ""
+	ProjectUnixDir = ""
+	LibDir         = "github.com/zhenyiya/"
+	LibUnixDir     = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/"
 )
