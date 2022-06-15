@@ -2,11 +2,10 @@ package streamflow
 
 import (
 	"github.com/zhenyiya/cmd"
+	"github.com/zhenyiya/collaborator"
 	"github.com/zhenyiya/constants"
 	"github.com/zhenyiya/logger"
-	"github.com/zhenyiya/remote/collaborator"
 	"github.com/zhenyiya/remote/coordinator"
-	"github.com/zhenyiya/server"
 	"github.com/zhenyiya/server/mapper"
 	"github.com/zhenyiya/server/reducer"
 	"github.com/zhenyiya/server/task"
@@ -104,19 +103,14 @@ func Run(vars ...*cmd.SysVars) {
 
 	switch runVars.ServerMode {
 	case constants.CollaboratorModeAbbr, constants.CollaboratorMode:
-		// create publisher
-		pbls := server.GetPublisherInstance()
-		server.Logger(localLogger)
 		// create collaborator
-		clbt := collaborator.NewCollaborator(pbls, localLogger)
+		clbt := collaborator.NewCollaborator(localLogger)
 
-		mst := workable.NewMaster(clbt, localLogger)
+		mst := workable.NewMaster(localLogger)
 		mst.BatchAttach(runVars.MaxRoutines)
 		mst.LaunchAll()
 
-		// connect to master
-		pbls.Connect(mst)
-		clbt.Hire(mst)
+		clbt.Join(mst)
 
 		clbt.Handle(router)
 

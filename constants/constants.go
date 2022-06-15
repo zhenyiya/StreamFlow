@@ -53,6 +53,15 @@ var (
 	DefaultSynInterval         = 3 * time.Minute
 )
 
+// executor types
+const (
+	ExecutorTypeMapper   = "mapper"
+	ExecutorTypeReducer  = "reducer"
+	ExecutorTypeShuffler = "shuffler"
+	ExecutorTypeCombiner = "combiner"
+	ExecutorTypeDefault  = "default"
+)
+
 // communication types
 const (
 	ArgTypeInteger              = "integer"
@@ -82,27 +91,29 @@ const (
 
 // errors
 var (
-	ErrUnknownCmdArg        = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
-	ErrConnectionClosed     = errors.New("zhenyiya: connection closed")
-	ErrUnknown              = errors.New("zhenyiya: unknown error")
-	ErrAPIError             = errors.New("zhenyiya: api error")
-	ErrNoCollaborator       = errors.New("zhenyiya: collaborator does not exist")
-	ErrCollaboratorExists   = errors.New("zhenyiya: collaborator already exists")
-	ErrNoService            = errors.New("zhenyiya: service of id does not exist")
-	ErrConflictService      = errors.New("zhenyiya: found conflict, service of id already exists")
-	ErrNoRegister           = errors.New("zhenyiya: register does not exist")
-	ErrConflictRegister     = errors.New("zhenyiya: found conflict, provider of the service already exists")
-	ErrNoSubscriber         = errors.New("zhenyiya: subscriber does not exist")
-	ErrConflictSubscriber   = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
-	ErrTimeout              = errors.New("zhenyiya: task timeout error")
-	ErrNoPeers              = errors.New("zhenyiya: no peer appears in the contact book")
-	ErrFunctNotExist        = errors.New("zhenyiya: no such function found in store")
-	ErrJobNotExist          = errors.New("zhenyiya: no sucn job found in store")
-	ErrMapperNotFound       = errors.New("zhenyiya: no such mapper found in store")
-	ErrReducerNotFound      = errors.New("zhenyiya: no such reducer found in store")
-	ErrValNotFound          = errors.New("zhenyiya: no value found with such key")
-	ErrCaseMismatch         = errors.New("zhenyiya: case mismatch error")
-	ErrCollaboratorMismatch = errors.New("zhenyiya: collaborator mismatch error")
+	ErrUnknownCmdArg                   = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
+	ErrConnectionClosed                = errors.New("zhenyiya: connection closed")
+	ErrUnknown                         = errors.New("zhenyiya: unknown error")
+	ErrAPIError                        = errors.New("zhenyiya: api error")
+	ErrNoCollaborator                  = errors.New("zhenyiya: collaborator does not exist")
+	ErrCollaboratorExists              = errors.New("zhenyiya: collaborator already exists")
+	ErrNoService                       = errors.New("zhenyiya: service of id does not exist")
+	ErrConflictService                 = errors.New("zhenyiya: found conflict, service of id already exists")
+	ErrNoRegister                      = errors.New("zhenyiya: register does not exist")
+	ErrConflictRegister                = errors.New("zhenyiya: found conflict, provider of the service already exists")
+	ErrNoSubscriber                    = errors.New("zhenyiya: subscriber does not exist")
+	ErrConflictSubscriber              = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
+	ErrTimeout                         = errors.New("zhenyiya: task timeout error")
+	ErrNoPeers                         = errors.New("zhenyiya: no peer appears in the contact book")
+	ErrFunctNotExist                   = errors.New("zhenyiya: no such function found in store")
+	ErrJobNotExist                     = errors.New("zhenyiya: no sucn job found in store")
+	ErrExecutorNotFound                = errors.New("zhenyiya: no such executor found in store")
+	ErrValNotFound                     = errors.New("zhenyiya: no value found with such key")
+	ErrCaseMismatch                    = errors.New("zhenyiya: case mismatch error")
+	ErrCollaboratorMismatch            = errors.New("zhenyiya: collaborator mismatch error")
+	ErrMapTaskFailing                  = errors.New("zhenyiya: map operation failing error")
+	ErrReduceTaskFailing               = errors.New("zhenyiya: reduce operation failing error")
+	ErrExecutorStackLengthInconsistent = errors.New("zhenyiya: executor stack length inconsistent error")
 )
 
 type Header struct {
