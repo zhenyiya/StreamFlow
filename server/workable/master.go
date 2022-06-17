@@ -3,7 +3,6 @@ package workable
 import (
 	"errors"
 	"github.com/zhenyiya/constants"
-	"github.com/zhenyiya/logger"
 	"github.com/zhenyiya/server/servershared"
 	"github.com/zhenyiya/server/task"
 	"github.com/zhenyiya/store"
@@ -14,7 +13,6 @@ import (
 type Master struct {
 	Count       uint
 	List        map[uint]*servershared.Worker
-	Logger      *logger.Logger
 	BaseTasks   chan *task.Task
 	LowTasks    chan *task.Task
 	MediumTasks chan *task.Task
@@ -22,11 +20,8 @@ type Master struct {
 	UrgentTasks chan *task.Task
 }
 
-func NewMaster(args ...*logger.Logger) *Master {
-	if len(args) > 0 {
-		return &Master{0, make(map[uint]*servershared.Worker), args[0], make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task)}
-	}
-	return &Master{0, make(map[uint]*servershared.Worker), nil, make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task)}
+func NewMaster() *Master {
+	return &Master{0, make(map[uint]*servershared.Worker), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task), make(chan *task.Task)}
 }
 
 func (m *Master) Enqueue(ts map[int]*task.Task) {
