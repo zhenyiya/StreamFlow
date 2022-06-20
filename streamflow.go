@@ -6,6 +6,7 @@ import (
 	"github.com/zhenyiya/constants"
 	"github.com/zhenyiya/logger"
 	"github.com/zhenyiya/remote/coordinator"
+	"github.com/zhenyiya/server/executor"
 	"github.com/zhenyiya/server/mapper"
 	"github.com/zhenyiya/server/reducer"
 	"github.com/zhenyiya/server/task"
@@ -26,6 +27,9 @@ func Set(key string, val ...interface{}) interface{} {
 	case constants.Reducer:
 		fs := store.GetInstance()
 		fs.SetReducer(val[0].(reducer.Reducer), val[1].(string))
+	case constants.Executor:
+		fs := store.GetInstance()
+		fs.SetExecutor(val[0].(executor.Executor), val[1].(string))
 	case constants.Function:
 		// register function
 		fs := store.GetInstance()
