@@ -2,7 +2,7 @@ package web
 
 import (
 	"encoding/json"
-	"github.com/zhenyiya/artifacts"
+	"github.com/zhenyiya/artifacts/restful"
 	"github.com/zhenyiya/cmd"
 	"github.com/zhenyiya/constants"
 	"github.com/zhenyiya/logger"
@@ -47,13 +47,13 @@ func Profile(w http.ResponseWriter, r *http.Request) {
 func Routes(w http.ResponseWriter, r *http.Request) {
 	router := store.GetRouter()
 
-	base := artifacts.Base{"zhenyiya API", "[ Base URL: / ]"}
-	entries := []artifacts.EntriesGroup{}
-	models := []artifacts.ModelsGroup{}
+	base := restful.Base{"zhenyiya API", "[ Base URL: / ]"}
+	entries := []restful.EntriesGroup{}
+	models := []restful.ModelsGroup{}
 
 	router.Walk(func(route *mux.Route, router *mux.Router, ancestors []*mux.Route) error {
 
-		es := []artifacts.Entry{}
+		es := []restful.Entry{}
 
 		t, err := route.GetPathTemplate()
 		if err != nil {
@@ -68,16 +68,16 @@ func Routes(w http.ResponseWriter, r *http.Request) {
 		}
 
 		for _, m := range methods {
-			es = append(es, artifacts.Entry{m, t, "", false})
+			es = append(es, restful.Entry{m, t, "", false})
 		}
 
-		entries = append(entries, artifacts.EntriesGroup{n, "", es})
+		entries = append(entries, restful.EntriesGroup{n, "", es})
 
 		return nil
 	})
 
-	artifact := artifacts.Artifact{base, entries, models}
-	mal, err := json.Marshal(artifact)
+	dbPayload := restful.DashboardPayload{base, entries, models}
+	mal, err := json.Marshal(dbPayload)
 
 	if err != nil {
 		panic(err)
