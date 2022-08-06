@@ -122,6 +122,7 @@ var (
 	ErrReduceTaskFailing               = errors.New("zhenyiya: reduce operation failing error")
 	ErrExecutorStackLengthInconsistent = errors.New("zhenyiya: executor stack length inconsistent error")
 	ErrMessageChannelDirty             = errors.New("zhenyiya: message channel has unconsumed message error")
+	ErrTaskChannelDirty                = errors.New("zhenyiya: task channel has unconsumed task error")
 )
 
 type Header struct {
