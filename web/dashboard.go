@@ -3,6 +3,7 @@ package web
 import (
 	"encoding/json"
 	"github.com/zhenyiya/artifacts/restful"
+	"github.com/zhenyiya/artifacts/stats"
 	"github.com/zhenyiya/cmd"
 	"github.com/zhenyiya/constants"
 	"github.com/zhenyiya/logger"
@@ -74,4 +75,17 @@ func Logs(w http.ResponseWriter, r *http.Request) {
 	utils.AdaptHTTPWithHeader(w, constants.Header200OK)
 	utils.AdaptHTTPWithHeader(w, constants.HeaderCORSEnableAllOrigin)
 	io.WriteString(w, str)
+}
+
+func Stats(w http.ResponseWriter, r *http.Request) {
+	mal, err := json.Marshal(stats.GetStatsInstance().Stats())
+
+	if err != nil {
+		panic(err)
+	}
+
+	utils.AdaptHTTPWithHeader(w, constants.Header200OK)
+	utils.AdaptHTTPWithHeader(w, constants.HeaderContentTypeJSON)
+	utils.AdaptHTTPWithHeader(w, constants.HeaderCORSEnableAllOrigin)
+	io.WriteString(w, string(mal))
 }

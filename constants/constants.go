@@ -56,6 +56,8 @@ var (
 	DefaultMaxMappingTime           = 600 * time.Second
 	DefaultSynInterval              = 3 * time.Minute
 	DefaultJobRequestRefillInterval = 1 * time.Millisecond
+	DefaultStatFlushInterval        = 20 * time.Millisecond
+	DefaultStatAbstractInterval     = 3 * time.Second
 )
 
 // executor types
@@ -94,6 +96,10 @@ const (
 	ConstraintTypeOneOf         = "oneOf"
 )
 
+const (
+	StatsPolicySumOfInt = "StatsPolicySumOfInt"
+)
+
 // errors
 var (
 	ErrUnknownCmdArg                   = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
@@ -123,6 +129,7 @@ var (
 	ErrExecutorStackLengthInconsistent = errors.New("zhenyiya: executor stack length inconsistent error")
 	ErrMessageChannelDirty             = errors.New("zhenyiya: message channel has unconsumed message error")
 	ErrTaskChannelDirty                = errors.New("zhenyiya: task channel has unconsumed task error")
+	ErrStatTypeNotFound                = errors.New("zhenyiya: stat type not found error")
 )
 
 type Header struct {
