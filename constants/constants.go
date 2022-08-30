@@ -134,6 +134,11 @@ var (
 	ErrTaskChannelDirty                = errors.New("zhenyiya: task channel has unconsumed task error")
 	ErrStatTypeNotFound                = errors.New("zhenyiya: stat type not found error")
 	ErrCoordinatorNotFound             = errors.New("zhenyiya: coordinator not found error")
+	ErrInputStreamCorrupted            = errors.New("zhenyiya: input stream corrupted error")
+	ErrInputStreamNotSupported         = errors.New("zhenyiya: input stream type not suppoted error")
+	ErrIODecodePointerRequired         = errors.New("zhenyiya: Decode error, the reference instance must be a pointer")
+	ErrIODecodeSliceRequired           = errors.New("zhenyiya: Decode error, the reference instance must be a slice")
+	ErrIODecodeStructRequired          = errors.New("zhenyiya: Decode error, the reference instance must be a struct")
 )
 
 type Header struct {
