@@ -1,7 +1,7 @@
 package iremote
 
 import (
-	"github.com/zhenyiya/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
 )
 
 type IDigest interface {

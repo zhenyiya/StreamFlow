@@ -1,7 +1,7 @@
 package message
 
 import (
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 )
 
 type CardMessageFuture struct {

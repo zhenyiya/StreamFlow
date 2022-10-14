@@ -183,6 +183,6 @@ const (
 var (
 	ProjectDir     = ""
 	ProjectUnixDir = ""
-	LibDir         = "github.com/zhenyiya/"
-	LibUnixDir     = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/"
+	LibDir         = "github.com/zhenyiya/StreamFlow/"
+	LibUnixDir     = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/StreamFlow/"
 )

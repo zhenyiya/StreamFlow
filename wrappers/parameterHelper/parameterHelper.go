@@ -1,7 +1,7 @@
 package parameterHelper
 
 import (
-	"github.com/zhenyiya/artifacts/parameter"
+	"github.com/zhenyiya/StreamFlow/artifacts/parameter"
 )
 
 func UnmarshalParameters(original []interface{}) []parameter.Parameter {

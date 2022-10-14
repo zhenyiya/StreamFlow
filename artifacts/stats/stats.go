@@ -1,7 +1,7 @@
 package stats
 
 import (
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"sync"
 	"time"
 )

@@ -1,8 +1,8 @@
 package iworkable
 
 import (
-	"github.com/zhenyiya/artifacts/task"
-	"github.com/zhenyiya/artifacts/worker"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/artifacts/worker"
 	"sync"
 )
 

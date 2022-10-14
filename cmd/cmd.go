@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"flag"
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"path/filepath"
 	"strconv"
 	"sync"

@@ -1,7 +1,7 @@
 package taskHelper
 
 import (
-	"github.com/zhenyiya/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
 )
 
 func Filter(inmaps map[int]*task.Task, f func(int, *task.Task) bool) map[int]*task.Task {

@@ -1,7 +1,7 @@
 package web
 
 import (
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"html/template"
 	"net/http"
 	"path/filepath"

@@ -1,7 +1,7 @@
 package taskHelper
 
 import (
-	"github.com/zhenyiya/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
 )
 
 type mapop struct {

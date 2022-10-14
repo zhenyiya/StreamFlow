@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/zhenyiya/artifacts/card"
-	"github.com/zhenyiya/artifacts/parameter"
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/artifacts/parameter"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"math/rand"
 	"sync"
 	"time"

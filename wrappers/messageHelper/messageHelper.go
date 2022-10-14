@@ -1,9 +1,9 @@
 package messageHelper
 
 import (
-	"github.com/zhenyiya/artifacts/iremote"
-	"github.com/zhenyiya/artifacts/message"
-	"github.com/zhenyiya/store"
+	"github.com/zhenyiya/StreamFlow/artifacts/iremote"
+	"github.com/zhenyiya/StreamFlow/artifacts/message"
+	"github.com/zhenyiya/StreamFlow/store"
 )
 
 func Exchange(in *message.CardMessage, out *message.CardMessage) error {

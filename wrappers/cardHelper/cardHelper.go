@@ -1,8 +1,8 @@
 package cardHelper
 
 import (
-	"github.com/zhenyiya/artifacts/card"
-	"github.com/zhenyiya/logger"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/logger"
 )
 
 func UnmarshalCards(original []interface{}) []card.Card {

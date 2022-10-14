@@ -1,7 +1,7 @@
 package task
 
 import (
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"github.com/satori/go.uuid"
 	"sort"
 )

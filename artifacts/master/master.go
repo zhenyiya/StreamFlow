@@ -2,9 +2,9 @@ package master
 
 import (
 	"errors"
-	"github.com/zhenyiya/artifacts/task"
-	"github.com/zhenyiya/artifacts/worker"
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/artifacts/worker"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"strconv"
 	"time"
 )

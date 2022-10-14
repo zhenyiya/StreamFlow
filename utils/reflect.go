@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"github.com/fatih/structs"
 	"reflect"
 	"runtime"

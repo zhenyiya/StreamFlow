@@ -1,9 +1,9 @@
 package collaborator
 
 import (
-	"github.com/zhenyiya/artifacts/message"
-	"github.com/zhenyiya/artifacts/task"
-	"github.com/zhenyiya/logger"
+	"github.com/zhenyiya/StreamFlow/artifacts/message"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/logger"
 	"net/rpc"
 )
 

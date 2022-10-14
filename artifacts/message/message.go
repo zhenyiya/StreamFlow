@@ -1,10 +1,10 @@
 package message
 
 import (
-	"github.com/zhenyiya/artifacts/card"
-	"github.com/zhenyiya/artifacts/digest"
-	"github.com/zhenyiya/artifacts/iremote"
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/artifacts/digest"
+	"github.com/zhenyiya/StreamFlow/artifacts/iremote"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"time"
 )
 

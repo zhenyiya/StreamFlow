@@ -1,8 +1,8 @@
 package task
 
 import (
-	"github.com/zhenyiya/constants"
-	"github.com/zhenyiya/utils"
+	"github.com/zhenyiya/StreamFlow/constants"
+	"github.com/zhenyiya/StreamFlow/utils"
 	"sync"
 )
 

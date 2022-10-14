@@ -2,9 +2,9 @@ package worker
 
 import (
 	"fmt"
-	"github.com/zhenyiya/artifacts/task"
-	"github.com/zhenyiya/logger"
-	"github.com/zhenyiya/store"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/logger"
+	"github.com/zhenyiya/StreamFlow/store"
 )
 
 type Worker struct {

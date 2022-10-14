@@ -1,14 +1,14 @@
 package store
 
 import (
-	"github.com/zhenyiya/artifacts/iexecutor"
-	"github.com/zhenyiya/artifacts/imapper"
-	"github.com/zhenyiya/artifacts/ireducer"
-	"github.com/zhenyiya/artifacts/message"
-	"github.com/zhenyiya/artifacts/task"
-	"github.com/zhenyiya/constants"
-	"github.com/zhenyiya/logger"
-	"github.com/zhenyiya/utils"
+	"github.com/zhenyiya/StreamFlow/artifacts/iexecutor"
+	"github.com/zhenyiya/StreamFlow/artifacts/imapper"
+	"github.com/zhenyiya/StreamFlow/artifacts/ireducer"
+	"github.com/zhenyiya/StreamFlow/artifacts/message"
+	"github.com/zhenyiya/StreamFlow/artifacts/task"
+	"github.com/zhenyiya/StreamFlow/constants"
+	"github.com/zhenyiya/StreamFlow/logger"
+	"github.com/zhenyiya/StreamFlow/utils"
 	"github.com/gorilla/mux"
 	"golang.org/x/time/rate"
 	"net/http"

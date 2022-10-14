@@ -1,7 +1,7 @@
 package digest
 
 import (
-	"github.com/zhenyiya/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
 )
 
 type Digest struct {

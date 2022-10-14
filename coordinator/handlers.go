@@ -1,10 +1,10 @@
 package coordinator
 
 import (
-	"github.com/zhenyiya/artifacts/card"
-	"github.com/zhenyiya/artifacts/restful"
-	"github.com/zhenyiya/artifacts/service"
-	"github.com/zhenyiya/wrappers/restfulHelper"
+	"github.com/zhenyiya/StreamFlow/artifacts/card"
+	"github.com/zhenyiya/StreamFlow/artifacts/restful"
+	"github.com/zhenyiya/StreamFlow/artifacts/service"
+	"github.com/zhenyiya/StreamFlow/wrappers/restfulHelper"
 	"github.com/gorilla/mux"
 	"io/ioutil"
 	"net/http"

@@ -2,9 +2,9 @@ package restfulHelper
 
 import (
 	"encoding/json"
-	"github.com/zhenyiya/artifacts/restful"
-	"github.com/zhenyiya/constants"
-	"github.com/zhenyiya/utils"
+	"github.com/zhenyiya/StreamFlow/artifacts/restful"
+	"github.com/zhenyiya/StreamFlow/constants"
+	"github.com/zhenyiya/StreamFlow/utils"
 	"io"
 	"net/http"
 )

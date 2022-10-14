@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/zhenyiya/artifacts/restful"
+	"github.com/zhenyiya/StreamFlow/artifacts/restful"
 )
 
 type ServiceResource struct {

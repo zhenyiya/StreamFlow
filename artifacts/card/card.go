@@ -1,7 +1,7 @@
 package card
 
 import (
-	"github.com/zhenyiya/utils"
+	"github.com/zhenyiya/StreamFlow/utils"
 	"strconv"
 )
 

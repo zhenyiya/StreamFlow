@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"github.com/zhenyiya/artifacts/stats"
-	"github.com/zhenyiya/constants"
+	"github.com/zhenyiya/StreamFlow/artifacts/stats"
+	"github.com/zhenyiya/StreamFlow/constants"
 	"github.com/gorilla/mux"
 	"golang.org/x/time/rate"
 	"io"
