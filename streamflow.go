@@ -119,7 +119,7 @@ func Run(vars ...*cmd.SysVars) {
 	default:
 	}
 
-	logger.LogLogo("", "(c) 2017 zhenyiya", "", "Author: Hastings Yeung", "Github: https://github.com/HastingsYoung/zhenyiya", "")
+	logger.LogLogo("", "(c) 2017 zhenyiya", "", "Author: Hastings Yeung", "Github: https://github.com/zhenyiya", "")
 
 	switch runVars.ServerMode {
 	case constants.CollaboratorModeAbbr, constants.CollaboratorMode:
