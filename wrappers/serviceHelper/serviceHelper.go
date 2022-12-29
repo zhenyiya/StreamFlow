@@ -1,15 +1,7 @@
 package serviceHelper
 
 import (
-	// "bytes"
-	// "encoding/json"
-	// "github.com/zhenyiya/StreamFlow/artifacts/card"
-	// "github.com/zhenyiya/StreamFlow/artifacts/restful"
 	"github.com/zhenyiya/StreamFlow/artifacts/service"
-	// "github.com/zhenyiya/StreamFlow/constants"
-	// "github.com/zhenyiya/StreamFlow/utils"
-	// "io"
-	// "net/http"
 )
 
 func ModeInterpret(original interface{}) service.Mode {
