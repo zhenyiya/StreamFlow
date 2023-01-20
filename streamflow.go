@@ -9,7 +9,6 @@ import (
 	"github.com/zhenyiya/StreamFlow/cmd"
 	"github.com/zhenyiya/StreamFlow/collaborator"
 	"github.com/zhenyiya/StreamFlow/constants"
-	"github.com/zhenyiya/StreamFlow/coordinator"
 	"github.com/zhenyiya/StreamFlow/logger"
 	"github.com/zhenyiya/StreamFlow/store"
 	"github.com/zhenyiya/StreamFlow/utils"
@@ -122,7 +121,12 @@ func Run(vars ...*cmd.SysVars) {
 	logger.LogLogo("", "(c) 2017 zhenyiya", "", "Author: Hastings Yeung", "Github: https://github.com/zhenyiya", "")
 
 	switch runVars.ServerMode {
-	case constants.CollaboratorModeAbbr, constants.CollaboratorMode:
+	// WARNING: Deprecated since zhenyiya ver 0.5.x
+	// case constants.CoordinatorModeAbbr, constants.CoordinatorMode:
+	// 	cdnt := coordinator.GetCoordinatorInstance(int32(runVars.Port))
+	// 	cdnt.Handle(router)
+
+	default:
 		// create collaborator
 		clbt := collaborator.NewCollaborator()
 
@@ -133,10 +137,6 @@ func Run(vars ...*cmd.SysVars) {
 		clbt.Join(mst)
 
 		clbt.Handle(router)
-
-	case constants.CoordinatorModeAbbr, constants.CoordinatorMode:
-		cdnt := coordinator.GetCoordinatorInstance(int32(runVars.Port))
-		cdnt.Handle(router)
 	}
 
 	// launch server
