@@ -8,138 +8,125 @@ import (
 
 // system vars
 const (
-	CollaboratorModeAbbr   = "clbt"
-	CollaboratorMode       = "collaborator"
-	CoordinatorModeAbbr    = "cdnt"
-	CoordinatorMode        = "coordinator"
-	DebugInactivated       = false
-	DebugActivated         = true
-	DefaultListenPort      = 8080
-	DefaultCasePath        = "./case.json"
-	DefaultLogPath         = "./history.log"
-	DefaultDataStorePath   = "./streamflow.dat"
-	DefaultLogPrefix       = ""
-	CleanHistory           = true
-	DefaultNotCleanHistory = false
-	Mapper                 = "Mapper"
-	Reducer                = "Reducer"
-	Executor               = "Executor"
-	Function               = "Function"
-	HashFunction           = "HashFunction"
-	Shared                 = "Shared"
-	Local                  = "Local"
-	Limit                  = "Limit"
-	ProjectPath            = "ProjectPath"
-	ProjectUnixPath        = "ProjectUnixPath"
-	DefaultWorkerPerMaster = 10
-	DefaultHost            = "localhost"
-	DefaultGossipNum       = 5
-	DefaultCaseID          = "zhenyiyaStandardCase"
-	DefaultJobRequestBurst = 1000
+	DEBUG_INACTIVATED         = false
+	DEBUG_ACTIVATED           = true
+	DEFAULT_LISTEN_PORT       = 8080
+	DEFAULT_CASE_PATH         = "./case.json"
+	DEFAULT_LOG_PATH          = "./history.log"
+	DEFAULT_LOG_PREFIX        = ""
+	CLEAN_HISTORY             = true
+	DEFAULT_NOT_CLEAN_HISTORY = false
+	MAPPER                    = "Mapper"
+	REDUCER                   = "Reducer"
+	EXECUTOR                  = "Executor"
+	FUNCTION                  = "Function"
+	HASH_FUNCTION             = "HashFunction"
+	SHARED                    = "Shared"
+	LOCAL                     = "Local"
+	LIMIT                     = "Limit"
+	PROJECT_PATH              = "ProjectPath"
+	PROJECT_UNIX_PATH         = "ProjectUnixPath"
+	DEFAULT_WORKER_PER_MASTER = 5
+	DEFAULT_HOST              = "localhost"
+	DEFAULT_GOSSIP_NUM        = 5
+	DEFAULT_CASE_ID           = "zhenyiyaStandardCase"
+	DEFAULT_JOB_REQUEST_BURST = 1000
 )
 
 // store setting
 const (
-	DefaultHashLength = 12
+	DEFAULT_HASH_LENGTH = 12
 )
 
 // time consts
 var (
-	DefaultRPCDialTimeout             = 20 * time.Second
-	DefaultReadTimeout                = 15 * time.Second
-	DefaultPeriodShort                = 500 * time.Millisecond
-	DefaultPeriodLong                 = 2000 * time.Millisecond
-	DefaultPeriodRoutineDay           = 24 * time.Hour
-	DefaultPeriodRoutineWeek          = 7 * 24 * time.Hour
-	DefaultPeriodRoutine30Days        = 30 * DefaultPeriodRoutineDay
-	DefaultPeriodPermanent            = 0 * time.Second
-	DefaultTaskExpireTime             = 30 * time.Second
-	DefaultGCInterval                 = 30 * time.Second
-	DefaultMaxMappingTime             = 600 * time.Second
-	DefaultSyncInterval               = 3 * time.Minute
-	DefaultHeartbeatInterval          = 5 * time.Second
-	DefaultJobRequestRefillInterval   = 1 * time.Millisecond
-	DefaultStatFlushInterval          = 20 * time.Millisecond
-	DefaultStatAbstractInterval       = 3 * time.Second
-	DefaultCollaboratorExpiryInterval = 10 * time.Minute
+	DEFAULT_RPC_DIAL_TIMEOUT             = 20 * time.Second
+	DEFAULT_READ_TIMEOUT                 = 15 * time.Second
+	DEFAULT_PERIOD_SHORT                 = 500 * time.Millisecond
+	DEFAULT_PERIOD_LONG                  = 2000 * time.Millisecond
+	DEFAULT_PERIOD_ROUTINE_DAY           = 24 * time.Hour
+	DEFAULT_PERIOD_ROUTINE_WEEK          = 7 * 24 * time.Hour
+	DEFAULT_PERIOD_ROUTINE_30_DAYS       = 30 * DEFAULT_PERIOD_ROUTINE_DAY
+	DEFAULT_PERIOD_PERMANENT             = 0 * time.Second
+	DEFAULT_TASK_EXPIRY_TIME             = 30 * time.Second
+	DEFAULT_GC_INTERVAL                  = 30 * time.Second
+	DEFAULT_MAX_MAPPING_TIME             = 600 * time.Second
+	DEFAULT_SYNC_INTERVAL                = 3 * time.Minute
+	DEFAULT_HEARTBEAT_INTERVAL           = 5 * time.Second
+	DEFAULT_JOB_REQUEST_REFILL_INTERVAL  = 1 * time.Millisecond
+	DEFAULT_STAT_FLUSH_INTERVAL          = 20 * time.Millisecond
+	DEFAULT_STAT_ABSTRACT_INTERVAL       = 3 * time.Second
+	DEFAULT_COLLABORATOR_EXPIRY_INTERVAL = 10 * time.Minute
 )
 
 // executor types
 const (
-	ExecutorTypeMapper   = "mapper"
-	ExecutorTypeReducer  = "reducer"
-	ExecutorTypeShuffler = "shuffler"
-	ExecutorTypeCombiner = "combiner"
-	ExecutorTypeDefault  = "default"
+	EXECUTOR_TYPE_MAPPER   = "mapper"
+	EXECUTOR_TYPE_REDUCER  = "reducer"
+	EXECUTOR_TYPE_COMBINER = "combiner"
+	EXECUTOR_TYPE_DEFAULT  = "default"
 )
 
 // communication types
 const (
-	ArgTypeInteger              = "integer"
-	ArgTypeNumber               = "number"
-	ArgTypeString               = "string"
-	ArgTypeObject               = "object"
-	ArgTypeBoolean              = "boolean"
-	ArgTypeNull                 = "null"
-	ArgTypeArray                = "array"
-	ConstraintTypeMax           = "maximum"
-	ConstraintTypeMin           = "minimum"
-	ConstraintTypeXMin          = "exclusiveMinimum"
-	ConstraintTypeXMax          = "exclusiveMaximum"
-	ConstraintTypeUniqueItems   = "uniqueItems"
-	ConstraintTypeMaxProperties = "maxProperties"
-	ConstraintTypeMinProperties = "minProperties"
-	ConstraintTypeMaxLength     = "maxLength"
-	ConstraintTypeMinLength     = "minLength"
-	ConstraintTypePattern       = "pattern"
-	ConstraintTypeMaxItems      = "maxItems"
-	ConstraintTypeMinItems      = "minItems"
-	ConstraintTypeEnum          = "enum" // value of interface{} should accept a slice
-	ConstraintTypeAllOf         = "allOf"
-	ConstraintTypeAnyOf         = "anyOf"
-	ConstraintTypeOneOf         = "oneOf"
+	ARG_TYPE_INTEGER               = "integer"
+	ARG_TYPE_NUMBER                = "number"
+	ARG_TYPE_STRING                = "string"
+	ARG_TYPE_OBJECT                = "object"
+	ARG_TYPE_BOOLEAN               = "boolean"
+	ARG_TYPE_NULL                  = "null"
+	ARG_TYPE_ARRAY                 = "array"
+	CONSTRAINT_TYPE_MAX            = "maximum"
+	CONSTRAINT_TYPE_MIN            = "minimum"
+	CONSTRAINT_TYPE_XMAX           = "exclusiveMaximum"
+	CONSTRAINT_TYPE_XMIN           = "exclusiveMinimum"
+	CONSTRAINT_TYPE_UNIQUE_ITEMS   = "uniqueItems"
+	CONSTRAINT_TYPE_MAX_PROPERTIES = "maxProperties"
+	CONSTRAINT_TYPE_MIN_PROPERTIES = "minProperties"
+	CONSTRAINT_TYPE_MAX_LENGTH     = "maxLength"
+	CONSTRAINT_TYPE_MIN_LENGTH     = "minLength"
+	CONSTRAINT_TYPE_PATTERN        = "pattern"
+	CONSTRAINT_TYPE_MAX_ITEMS      = "maxItems"
+	CONSTRAINT_TYPE_MIN_ITEMS      = "minItems"
+	CONSTRAINT_TYPE_ENUM           = "enum" // value of interface{} should accept a slice
+	CONSTRAINT_TYPE_ALLOF          = "allOf"
+	CONSTRAINT_TYPE_ANYOF          = "anyOf"
+	CONSTRAINT_TYPE_ONEOF          = "oneOf"
 )
 
 const (
-	StatsPolicySumOfInt = "StatsPolicySumOfInt"
+	STATS_POLICY_SUM_OF_INTS = "StatsPolicySumOfInt"
 )
 
 // errors
 var (
-	ErrUnknownCmdArg                   = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
-	ErrConnectionClosed                = errors.New("zhenyiya: connection closed")
-	ErrUnknown                         = errors.New("zhenyiya: unknown error")
-	ErrAPIError                        = errors.New("zhenyiya: api error")
-	ErrNoCollaborator                  = errors.New("zhenyiya: collaborator does not exist")
-	ErrCollaboratorExists              = errors.New("zhenyiya: collaborator already exists")
-	ErrNoService                       = errors.New("zhenyiya: service of id does not exist")
-	ErrConflictService                 = errors.New("zhenyiya: found conflict, service of id already exists")
-	ErrNoRegister                      = errors.New("zhenyiya: register does not exist")
-	ErrConflictRegister                = errors.New("zhenyiya: found conflict, provider of the service already exists")
-	ErrNoSubscriber                    = errors.New("zhenyiya: subscriber does not exist")
-	ErrConflictSubscriber              = errors.New("zhenyiya: found conflict, subscriber of the service already exists")
-	ErrTimeout                         = errors.New("zhenyiya: task timeout error")
-	ErrNoPeers                         = errors.New("zhenyiya: no peer appears in the contact book")
-	ErrFunctNotExist                   = errors.New("zhenyiya: no such function found in store")
-	ErrJobNotExist                     = errors.New("zhenyiya: no sucn job found in store")
-	ErrExecutorNotFound                = errors.New("zhenyiya: no such executor found in store")
-	ErrLimiterNotFound                 = errors.New("zhenyiya: no such limiter found in store")
-	ErrValNotFound                     = errors.New("zhenyiya: no value found with such key")
-	ErrCaseMismatch                    = errors.New("zhenyiya: case mismatch error")
-	ErrCollaboratorMismatch            = errors.New("zhenyiya: collaborator mismatch error")
-	ErrUnknownMsgType                  = errors.New("zhenyiya: unknown message type error")
-	ErrMapTaskFailing                  = errors.New("zhenyiya: map operation failing error")
-	ErrReduceTaskFailing               = errors.New("zhenyiya: reduce operation failing error")
-	ErrExecutorStackLengthInconsistent = errors.New("zhenyiya: executor stack length inconsistent error")
-	ErrMessageChannelDirty             = errors.New("zhenyiya: message channel has unconsumed message error")
-	ErrTaskChannelDirty                = errors.New("zhenyiya: task channel has unconsumed task error")
-	ErrStatTypeNotFound                = errors.New("zhenyiya: stat type not found error")
-	ErrCoordinatorNotFound             = errors.New("zhenyiya: coordinator not found error")
-	ErrInputStreamCorrupted            = errors.New("zhenyiya: input stream corrupted error")
-	ErrInputStreamNotSupported         = errors.New("zhenyiya: input stream type not suppoted error")
-	ErrIODecodePointerRequired         = errors.New("zhenyiya: Decode error, the reference instance must be a pointer")
-	ErrIODecodeSliceRequired           = errors.New("zhenyiya: Decode error, the reference instance must be a slice")
-	ErrIODecodeStructRequired          = errors.New("zhenyiya: Decode error, the reference instance must be a struct")
+	ERR_UNKNOWN_CMD_ARG                    = errors.New("zhenyiya: unknown commandline argument, please enter -h to check out")
+	ERR_CONNECTION_CLOSED                  = errors.New("zhenyiya: connection closed")
+	ERR_UNKNOWN                            = errors.New("zhenyiya: unknown error")
+	ERR_API                                = errors.New("zhenyiya: api error")
+	ERR_NO_COLLABORATOR                    = errors.New("zhenyiya: collaborator does not exist")
+	ERR_COLLAOBRATOR_ALREADY_EXISTS        = errors.New("zhenyiya: collaborator already exists")
+	ERR_TASK_TIMEOUT                       = errors.New("zhenyiya: task timeout error")
+	ERR_NO_PEERS                           = errors.New("zhenyiya: no peer appears in the contact")
+	ERR_FUNCT_NOT_EXIST                    = errors.New("zhenyiya: no such function found in store")
+	ERR_JOB_NOT_EXIST                      = errors.New("zhenyiya: no sucn job found in store")
+	ERR_EXECUTOR_NOT_FOUND                 = errors.New("zhenyiya: no such executor found in store")
+	ERR_LIMITER_NOT_FOUND                  = errors.New("zhenyiya: no such limiter found in store")
+	ERR_VAL_NOT_FOUND                      = errors.New("zhenyiya: no value found with such key")
+	ERR_CASE_MISMATCH                      = errors.New("zhenyiya: case mismatch error")
+	ERR_COLLABORATOR_MISMATCH              = errors.New("zhenyiya: collaborator mismatch error")
+	ERR_UNKNOWN_MSG_TYPE                   = errors.New("zhenyiya: unknown message type error")
+	ERR_TASK_MAP_FAIL                      = errors.New("zhenyiya: map operation failing error")
+	ERR_TASK_REDUCE_FAIL                   = errors.New("zhenyiya: reduce operation failing error")
+	ERR_EXECUTOR_STACK_LENGTH_INCONSISTENT = errors.New("zhenyiya: executor stack length inconsistent error")
+	ERR_MSG_CHAN_DIRTY                     = errors.New("zhenyiya: message channel has unconsumed message error")
+	ERR_TASK_CHAN_DIRTY                    = errors.New("zhenyiya: task channel has unconsumed task error")
+	ERR_STAT_TYPE_NOT_FOUND                = errors.New("zhenyiya: stat type not found error")
+	ERR_INPUT_STREAM_CORRUPTED             = errors.New("zhenyiya: input stream corrupted error")
+	ERR_INPUT_STREAM_NOT_SUPPORTED         = errors.New("zhenyiya: input stream type not suppoted error")
+	ERR_IO_DECODE_POINTER_REQUIRED         = errors.New("zhenyiya: Decode error, the reference instance must be a pointer")
+	ERR_IO_DECODE_SLICE_REQUIRED           = errors.New("zhenyiya: Decode error, the reference instance must be a slice")
+	ERR_IO_DECODE_STRUCT_REQUIRED          = errors.New("zhenyiya: Decode error, the reference instance must be a struct")
 )
 
 type Header struct {
@@ -149,28 +136,28 @@ type Header struct {
 
 // HTTP headers
 var (
-	HeaderContentTypeJSON     = Header{"Content-Type", "application/json"}
-	HeaderContentTypeText     = Header{"Content-Type", "text/html"}
-	HeaderCORSEnableAllOrigin = Header{"Access-Control-Allow-Origin", "*"}
+	HEADER_CONTENT_TYPE_JSON       = Header{"Content-Type", "application/json"}
+	HEADER_CONTENT_TYPE_TEXT       = Header{"Content-Type", "text/html"}
+	HEADER_CORS_ENABLED_ALL_ORIGIN = Header{"Access-Control-Allow-Origin", "*"}
 )
 
 // Gossip Protocol headers
 var (
-	GossipHeaderOK                   = Header{"200", "OK"}
-	GossipHeaderUnknownMsgType       = Header{"400", "UnknownMessageType"}
-	GossipHeaderCaseMismatch         = Header{"401", "CaseMismatch"}
-	GossipHeaderCollaboratorMismatch = Header{"401", "CollaboratorMismatch"}
-	GossipHeaderUnknownError         = Header{"500", "UnknownGossipError"}
+	GOSSIP_HEADER_OK                    = Header{"200", "OK"}
+	GOSSIP_HEADER_UNKNOWN_MSG_TYPE      = Header{"400", "UnknownMessageType"}
+	GOSSIP_HEADER_CASE_MISMATCH         = Header{"401", "CaseMismatch"}
+	GOSSIP_HEADER_COLLABORATOR_MISMATCH = Header{"401", "CollaboratorMismatch"}
+	GOSSIP_HEADER_UNKNOWN_ERROR         = Header{"500", "UnknownGossipError"}
 )
 
 // restful
 const (
-	JSONAPIVersion = `{"version":"1.0"}`
+	JSON_API_VERSION = `{"version":"1.0"}`
 )
 
 var (
-	ProjectDir     = ""
-	ProjectUnixDir = ""
-	LibDir         = "github.com/zhenyiya/StreamFlow/"
-	LibUnixDir     = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/StreamFlow/"
+	PROJECT_DIR      = ""
+	PROJECT_UNIX_DIR = ""
+	LIB_DIR          = "github.com/zhenyiya/StreamFlow/"
+	LIB_UNIX_DIR     = os.Getenv("GOPATH") + "/src/github.com/zhenyiya/StreamFlow/"
 )
