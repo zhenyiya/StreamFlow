@@ -1,6 +1,6 @@
 # StreamFlow
 
-Process large-scale data streams and manage distributed services.
+StreamFlow is a high-performance distributed computing platform designed to process large-scale data streams and manage distributed services. Built with Go's concurrency model at its core, StreamFlow provides an intuitive framework for building resilient, scalable applications that harness the full potential of distributed computing.
 
 ### Features
 
